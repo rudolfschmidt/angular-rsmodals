@@ -1,6 +1,7 @@
 'use strict'
 
-angular.module 'rsmodals'
+angular.module 'rsmodals', [
+]
 .directive 'modalOpen', ->
 	scope: data: '=modalOpen'
 	link: (scope, elm, attrs) ->
