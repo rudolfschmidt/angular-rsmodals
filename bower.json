@@ -1,0 +1,25 @@
+{
+  "name": "angular-rsmodals",
+  "authors": [
+    "Rudolf Schmidt <mail@rudolfschmidt.com>"
+  ],
+  "description": "yet another modal dialogs for your angular application",
+  "main": "rsmodals.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "modal",
+    "dialog"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.rudolfschmidt.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
