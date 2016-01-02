@@ -9,7 +9,7 @@ You can install this package with `bower` or copying the files directly.
 ### bower
 
 ```shell
-bower install rsmodals
+bower install angular-rsmodals
 ```
 
 Then add a `<script>` to your `index.html`:
