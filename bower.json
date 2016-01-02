@@ -3,7 +3,7 @@
   "authors": [
     "Rudolf Schmidt <mail@rudolfschmidt.com>"
   ],
-  "description": "yet another modal dialogs for your angular application",
+  "description": "yet other modal dialogs for your angular application",
   "main": "rsmodals.js",
   "moduleType": [
     "globals"

@@ -1,5 +1,5 @@
-# rsmodals
-modal dialogs for your angular application.
+# angular-rsmodals
+yet other modal dialogs for your angular application.
 
 ## Install
 This repo is for distribution on `bower`.
