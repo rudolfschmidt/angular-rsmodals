@@ -3,24 +3,24 @@
 angular.module 'rsmodals', [
 ]
 .directive 'modalOpen', ->
-	scope: data: '=modalOpen'
 	link: (scope, elm, attrs) ->
 		# when clicking modal is going to be shown
-		elm.click -> scope.$apply -> scope.data = show: true
+		elm.click -> scope.$apply ->
+			scope.$rsmodal = {}
+			scope.$rsmodal[attrs.modalOpen] = true
 .directive 'modalShow', ->
-	scope: data: '=modalShow', body: '@modalBody', container: '@modalContainer'
 	controller: ($scope) ->
-		@close = -> delete $scope.data
+		@close = -> delete $scope.$rsmodal
 		#coffee-script returns always the last property
 		undefined
 	link: (scope, elm, attrs, ctrl) ->
 		# set default config
-		body = scope.body or 'open-modal'
-		container = scope.container or 'section'
+		body = attrs.modalBody or 'open-modal'
+		container = attrs.container or 'section'
 		# make modal invisible from beginning
 		do elm.hide
 		# watch changes
-		scope.$watch 'data.show', (show) ->
+		scope.$watch '$rsmodal.' + attrs.modalShow, (show) ->
 			if show
 				# make body overflow hide
 				angular.element 'body'
