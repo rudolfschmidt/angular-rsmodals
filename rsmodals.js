@@ -3,38 +3,29 @@
   'use strict';
   angular.module('rsmodals', []).directive('modalOpen', function() {
     return {
-      scope: {
-        data: '=modalOpen'
-      },
       link: function(scope, elm, attrs) {
         return elm.click(function() {
           return scope.$apply(function() {
-            return scope.data = {
-              show: true
-            };
+            scope.$rsmodal = {};
+            return scope.$rsmodal[attrs.modalOpen] = true;
           });
         });
       }
     };
   }).directive('modalShow', function() {
     return {
-      scope: {
-        data: '=modalShow',
-        body: '@modalBody',
-        container: '@modalContainer'
-      },
       controller: function($scope) {
         this.close = function() {
-          return delete $scope.data;
+          return delete $scope.$rsmodal;
         };
         return void 0;
       },
       link: function(scope, elm, attrs, ctrl) {
         var body, container;
-        body = scope.body || 'open-modal';
-        container = scope.container || 'section';
+        body = attrs.modalBody || 'open-modal';
+        container = attrs.container || 'section';
         elm.hide();
-        scope.$watch('data.show', function(show) {
+        scope.$watch('$rsmodal.' + attrs.modalShow, function(show) {
           if (show) {
             angular.element('body').addClass(body);
             angular.element('[modal-show]').hide();
