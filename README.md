@@ -15,7 +15,7 @@ bower install angular-rsmodals
 Then add a `<script>` to your `index.html`:
 
 ```html
-<script src="/bower_components/rsmodals/rsmodals.min.js"></script>
+<script src="/bower_components/angular-rsmodals/rsmodals.min.js"></script>
 ```
 
 Make the module 'rsmodals' available in your angular application, e.g.
