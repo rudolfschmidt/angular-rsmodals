@@ -4,10 +4,8 @@ angular.module 'rsmodals', [
 ]
 .directive 'modalOpen', ->
 	link: (scope, elm, attrs) ->
-		# when clicking modal is going to be shown
-		elm.click -> scope.$apply ->
-			scope.$rsmodal = {}
-			scope.$rsmodal[attrs.modalOpen] = true
+		# when clicking modal emit event modal to be open to higher scopes
+		elm.click -> scope.$emit '$rsmodal-open', attrs.modalOpen
 .directive 'modalShow', ->
 	controller: ($scope) ->
 		@close = -> delete $scope.$rsmodal
@@ -19,6 +17,11 @@ angular.module 'rsmodals', [
 		container = attrs.container or 'section'
 		# make modal invisible from beginning
 		do elm.hide
+		# listen scope events from lower scopes
+		scope.$on '$rsmodal-open', (e, data) ->
+			scope.$apply ->
+				scope.$rsmodal = {}
+				scope.$rsmodal[data] = true
 		# watch changes
 		scope.$watch '$rsmodal.' + attrs.modalShow, (show) ->
 			if show
