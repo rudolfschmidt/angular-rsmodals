@@ -5,10 +5,7 @@
     return {
       link: function(scope, elm, attrs) {
         return elm.click(function() {
-          return scope.$apply(function() {
-            scope.$rsmodal = {};
-            return scope.$rsmodal[attrs.modalOpen] = true;
-          });
+          return scope.$emit('$rsmodal-open', attrs.modalOpen);
         });
       }
     };
@@ -25,6 +22,12 @@
         body = attrs.modalBody || 'open-modal';
         container = attrs.container || 'section';
         elm.hide();
+        scope.$on('$rsmodal-open', function(e, data) {
+          return scope.$apply(function() {
+            scope.$rsmodal = {};
+            return scope.$rsmodal[data] = true;
+          });
+        });
         scope.$watch('$rsmodal.' + attrs.modalShow, function(show) {
           if (show) {
             angular.element('body').addClass(body);
