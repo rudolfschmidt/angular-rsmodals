@@ -28,7 +28,7 @@
             return scope.$rsmodal[data] = true;
           });
         });
-        scope.$watch('$rsmodal.' + attrs.modalShow, function(show) {
+        scope.$watch("$rsmodal[" + attrs.modalShow + "]", function(show) {
           if (show) {
             angular.element('body').addClass(body);
             angular.element('[modal-show]').hide();
