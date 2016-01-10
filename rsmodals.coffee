@@ -23,7 +23,7 @@ angular.module 'rsmodals', [
 				scope.$rsmodal = {}
 				scope.$rsmodal[data] = true
 		# watch changes
-		scope.$watch "$rsmodal[#{attrs.modalShow}]", (show) ->
+		scope.$watch "$rsmodal['#{attrs.modalShow}']", (show) ->
 			if show
 				# make body overflow hide
 				angular.element 'body'
