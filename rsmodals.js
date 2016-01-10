@@ -28,7 +28,10 @@
             return scope.$rsmodal[data] = true;
           });
         });
-        scope.$watch("$rsmodal[" + attrs.modalShow + "]", function(show) {
+        scope.$watch((function() {
+          var ref;
+          return (ref = scope.$rsmodal) != null ? ref[attrs.modalShow] : void 0;
+        }), function(show) {
           if (show) {
             angular.element('body').addClass(body);
             angular.element('[modal-show]').hide();
